@@ -5,6 +5,7 @@ import { notFound } from 'next/navigation';
 
 import { ArticleContent } from '@/components/blog/ArticleContent';
 import { ArticleNavigation } from '@/components/blog/ArticleNavigation';
+import { ShareButtons } from '@/components/blog/ShareButtons';
 import { TableOfContents } from '@/components/blog/TableOfContents';
 import { Breadcrumb } from '@/components/seo/Breadcrumb';
 import { JsonLd } from '@/components/seo/JsonLd';
@@ -124,6 +125,8 @@ export default async function BlogPage({ params }: Props) {
 
         <TableOfContents content={article.content} />
         <ArticleContent content={article.content} />
+
+        <ShareButtons title={article.title} slug={article.slug} />
 
         <ArticleNavigation prev={adjacentBlogs.prev} next={adjacentBlogs.next} />
 

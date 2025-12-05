@@ -115,7 +115,7 @@
 - [x] 目次自動生成 (`src/components/blog/TableOfContents.tsx`)
 - [x] 関連記事表示
 - [x] 前後記事ナビゲーション (`src/components/blog/ArticleNavigation.tsx`)
-- [ ] SNSシェアボタン
+- [x] SNSシェアボタン (`src/components/blog/ShareButtons.tsx`)
 
 ### 3.3 カテゴリーページ (`/category/[slug]`)
 
@@ -220,11 +220,11 @@
 
 - [x] 404ページ (`src/app/not-found.tsx`)
 - [x] エラーページ (`src/app/error.tsx`)
-- [ ] グローバルエラーページ (`src/app/global-error.tsx`)
+- [x] グローバルエラーページ (`src/app/global-error.tsx`)
 
 ### 6.2 ローディング
 
-- [ ] ローディングUI (`src/app/loading.tsx`)
+- [x] ローディングUI (`src/app/loading.tsx`)
 - [ ] Suspense境界設定
 
 ### 6.3 アクセシビリティ
@@ -284,9 +284,9 @@
 | Phase 0: プロジェクトルール | 12 | 12 | 100% |
 | Phase 1: 環境構築 | 13 | 13 | 100% |
 | Phase 2: レイアウト | 15 | 12 | 80% |
-| Phase 3: ブログ機能 | 18 | 16 | 89% |
+| Phase 3: ブログ機能 | 18 | 17 | 94% |
 | Phase 4: SEO対策 | 15 | 15 | 100% |
 | Phase 5: パフォーマンス | 10 | 4 | 40% |
-| Phase 6: エラーハンドリング | 8 | 4 | 50% |
+| Phase 6: エラーハンドリング | 8 | 6 | 75% |
 | Phase 7: デプロイ | 10 | 0 | 0% |
-| **合計** | **101** | **78** | **77%** |
+| **合計** | **101** | **81** | **80%** |

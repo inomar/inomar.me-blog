@@ -25,18 +25,19 @@ export default async function AboutPage() {
       <h1 className="mb-8 text-3xl font-bold text-gray-900 dark:text-slate-100">About</h1>
 
       <div className="prose dark:prose-invert max-w-none">
-        <section className="mb-12">
-          <h2 className="mb-4 text-xl font-semibold text-gray-900 dark:text-slate-100">
-            このブログについて
-          </h2>
-          <p className="text-gray-600 dark:text-slate-400">
-            「不定期更新症候群」は、技術的なトピックや趣味について発信する個人ブログです。
-            Web開発、プログラミング、その他興味のあることについて不定期に更新していきます。
-          </p>
-        </section>
+        {profile?.about && (
+          <section className="mb-12">
+            <h2 className="mb-4 text-xl font-semibold text-gray-900 dark:text-slate-100">
+              このブログについて
+            </h2>
+            <p className="whitespace-pre-wrap text-gray-600 dark:text-slate-400">
+              {profile.about}
+            </p>
+          </section>
+        )}
 
         {profile && (
-          <section className="mb-12">
+          <section>
             <h2 className="mb-4 text-xl font-semibold text-gray-900 dark:text-slate-100">
               プロフィール
             </h2>
@@ -67,22 +68,6 @@ export default async function AboutPage() {
             </div>
           </section>
         )}
-
-        <section>
-          <h2 className="mb-4 text-xl font-semibold text-gray-900 dark:text-slate-100">
-            技術スタック
-          </h2>
-          <p className="mb-4 text-gray-600 dark:text-slate-400">
-            このブログは以下の技術で構築されています：
-          </p>
-          <ul className="list-inside list-disc space-y-2 text-gray-600 dark:text-slate-400">
-            <li>Next.js 16 (App Router)</li>
-            <li>TypeScript</li>
-            <li>Tailwind CSS 4</li>
-            <li>microCMS</li>
-            <li>Vercel</li>
-          </ul>
-        </section>
       </div>
     </div>
   );

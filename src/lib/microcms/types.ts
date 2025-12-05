@@ -35,6 +35,7 @@ export type Profile = {
   id: string;
   name: string;
   bio: string;
+  about?: string;
   avatar?: MicroCMSImage;
 } & MicroCMSDate;
 

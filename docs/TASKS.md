@@ -37,25 +37,25 @@
 
 ### 1.1 microCMS セットアップ
 
-- [ ] microCMSアカウント作成・サービス作成
-- [ ] APIスキーマ設定
-  - [ ] blogs（ブログ記事）
-  - [ ] categories（カテゴリー）
-  - [ ] tags（タグ）
-  - [ ] profile（プロフィール）
-- [ ] テストコンテンツ投入
+- [x] microCMSアカウント作成・サービス作成
+- [x] APIスキーマ設定
+  - [x] blogs（ブログ記事）
+  - [x] categories（カテゴリー）
+  - [x] tags（タグ）
+  - [x] profile（プロフィール）
+- [x] テストコンテンツ投入
 
 ### 1.2 プロジェクト設定
 
-- [ ] 環境変数設定（`.env.local`）
-- [ ] microCMS SDKインストール (`microcms-js-sdk`)
-- [ ] microCMSクライアント実装 (`src/lib/microcms/client.ts`)
-- [ ] 型定義作成 (`src/lib/microcms/types.ts`)
-- [ ] API関数実装 (`src/lib/microcms/api.ts`)
+- [x] 環境変数設定（`.env.local`）
+- [x] microCMS SDKインストール (`microcms-js-sdk`)
+- [x] microCMSクライアント実装 (`src/lib/microcms/client.ts`)
+- [x] 型定義作成 (`src/lib/microcms/types.ts`)
+- [x] API関数実装 (`src/lib/microcms/api.ts`)
 
 ### 1.3 追加パッケージインストール
 
-- [ ] `microcms-js-sdk` - microCMS SDK
+- [x] `microcms-js-sdk` - microCMS SDK
 - [x] `date-fns` - 日付操作
 - [ ] `shiki` - シンタックスハイライト
 - [ ] `rehype-slug` - 見出しにID付与
@@ -102,8 +102,8 @@
 ### 3.1 トップページ (`/`)
 
 - [ ] 記事一覧取得・表示
-- [ ] 記事カードコンポーネント (`src/components/blog/ArticleCard.tsx`)
-- [ ] 記事リストコンポーネント (`src/components/blog/ArticleList.tsx`)
+- [x] 記事カードコンポーネント (`src/components/blog/ArticleCard.tsx`)
+- [x] 記事リストコンポーネント (`src/components/blog/ArticleList.tsx`)
 - [ ] ページネーション実装
 
 ### 3.2 記事詳細ページ (`/blog/[slug]`)
@@ -282,11 +282,11 @@
 | Phase | タスク数 | 完了 | 進捗 |
 |-------|---------|------|------|
 | Phase 0: プロジェクトルール | 12 | 12 | 100% |
-| Phase 1: 環境構築 | 13 | 1 | 8% |
+| Phase 1: 環境構築 | 13 | 5 | 38% |
 | Phase 2: レイアウト | 15 | 12 | 80% |
-| Phase 3: ブログ機能 | 18 | 1 | 6% |
+| Phase 3: ブログ機能 | 18 | 3 | 17% |
 | Phase 4: SEO対策 | 15 | 11 | 73% |
 | Phase 5: パフォーマンス | 10 | 2 | 20% |
 | Phase 6: エラーハンドリング | 8 | 4 | 50% |
 | Phase 7: デプロイ | 10 | 0 | 0% |
-| **合計** | **101** | **43** | **43%** |
+| **合計** | **101** | **49** | **49%** |

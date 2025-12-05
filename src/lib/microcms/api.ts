@@ -36,6 +36,7 @@ export async function getBlogs(options?: {
         limit,
         filters,
         orders: '-publishedAt',
+        depth: 1, // カテゴリー・タグの詳細を取得
       },
     });
   } catch {
@@ -52,6 +53,7 @@ export async function getBlogBySlug(slug: string): Promise<Blog | null> {
       queries: {
         filters: `slug[equals]${slug}`,
         limit: 1,
+        depth: 1, // カテゴリー・タグの詳細を取得
       },
     });
 
@@ -108,6 +110,7 @@ export async function getBlogsByCategory(
         limit,
         filters: `category[equals]${categoryId}`,
         orders: '-publishedAt',
+        depth: 1, // カテゴリー・タグの詳細を取得
       },
     });
   } catch {
@@ -131,6 +134,7 @@ export async function getBlogsByTag(
         limit,
         filters: `tags[contains]${tagId}`,
         orders: '-publishedAt',
+        depth: 1, // カテゴリー・タグの詳細を取得
       },
     });
   } catch {
@@ -230,6 +234,7 @@ export async function getRelatedBlogs(
         filters: `category[equals]${categoryId}[and]id[not_equals]${currentBlogId}`,
         limit,
         orders: '-publishedAt',
+        depth: 1, // カテゴリー・タグの詳細を取得
       },
     });
 

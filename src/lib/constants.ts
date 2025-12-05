@@ -8,3 +8,8 @@ export const NAV_ITEMS = [
   { label: 'About', href: '/about' },
   { label: 'Search', href: '/search' },
 ] as const;
+
+export const SOCIAL_LINKS = [
+  { label: 'X', href: 'https://x.com/inomar0722', icon: 'x' },
+  { label: 'GitHub', href: 'https://github.com/inomar', icon: 'github' },
+] as const;

@@ -49,8 +49,8 @@
 | thumbnail | サムネイル | 画像 | - |
 | category | カテゴリー | コンテンツ参照（categories） | ○ |
 | tags | タグ | 複数コンテンツ参照（tags） | - |
-| publishedAt | 公開日 | 日時 | ○ |
-| updatedAt | 更新日 | 日時 | - |
+
+※ 公開日(`publishedAt`)・更新日(`updatedAt`)・作成日(`createdAt`)はmicroCMSのデフォルトフィールドを使用
 
 #### 2.1.2 カテゴリー (`categories`)
 
@@ -74,7 +74,6 @@
 | name | 名前 | テキストフィールド | ○ |
 | bio | 自己紹介 | テキストエリア | ○ |
 | avatar | アバター画像 | 画像 | - |
-| socialLinks | SNSリンク | 繰り返しフィールド | - |
 
 ---
 

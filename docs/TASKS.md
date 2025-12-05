@@ -56,7 +56,7 @@
 ### 1.3 追加パッケージインストール
 
 - [ ] `microcms-js-sdk` - microCMS SDK
-- [ ] `date-fns` - 日付操作
+- [x] `date-fns` - 日付操作
 - [ ] `shiki` - シンタックスハイライト
 - [ ] `rehype-slug` - 見出しにID付与
 - [ ] `remark-gfm` - GFM対応
@@ -67,33 +67,33 @@
 
 ### 2.1 レイアウト構築
 
-- [ ] ルートレイアウト更新 (`src/app/layout.tsx`)
-  - [ ] フォント設定（Noto Sans JP, JetBrains Mono）
-  - [ ] メタデータベース設定
+- [x] ルートレイアウト更新 (`src/app/layout.tsx`)
+  - [x] フォント設定（Noto Sans JP, JetBrains Mono）
+  - [x] メタデータベース設定
   - [ ] Google Analytics設定
-- [ ] ヘッダーコンポーネント (`src/components/layout/Header.tsx`)
-  - [ ] ロゴ / サイト名
-  - [ ] ナビゲーション
-  - [ ] ダークモード切替
-- [ ] フッターコンポーネント (`src/components/layout/Footer.tsx`)
-  - [ ] コピーライト
+- [x] ヘッダーコンポーネント (`src/components/layout/Header.tsx`)
+  - [x] ロゴ / サイト名
+  - [x] ナビゲーション
+  - [x] ダークモード切替
+- [x] フッターコンポーネント (`src/components/layout/Footer.tsx`)
+  - [x] コピーライト
   - [ ] SNSリンク
-  - [ ] サイトリンク
+  - [x] サイトリンク
 
 ### 2.2 UIコンポーネント
 
 - [ ] ボタン (`src/components/ui/Button.tsx`)
-- [ ] タグ (`src/components/ui/Tag.tsx`)
-- [ ] ページネーション (`src/components/ui/Pagination.tsx`)
+- [x] タグ (`src/components/ui/Tag.tsx`)
+- [x] ページネーション (`src/components/ui/Pagination.tsx`)
 - [ ] 検索入力 (`src/components/ui/SearchInput.tsx`)
-- [ ] スケルトンローダー (`src/components/ui/Skeleton.tsx`)
+- [x] スケルトンローダー (`src/components/ui/Skeleton.tsx`)
 
 ### 2.3 ダークモード実装
 
-- [ ] テーマプロバイダー設定
-- [ ] システム設定連動
-- [ ] 手動切替機能
-- [ ] LocalStorage永続化
+- [x] テーマプロバイダー設定
+- [x] システム設定連動
+- [x] 手動切替機能
+- [x] LocalStorage永続化
 
 ---
 
@@ -129,7 +129,7 @@
 
 ### 3.5 プロフィールページ (`/about`)
 
-- [ ] プロフィール情報取得・表示
+- [x] プロフィール情報取得・表示（プレースホルダー）
 - [ ] SNSリンク表示
 
 ### 3.6 検索機能 (`/search`)
@@ -144,36 +144,36 @@
 
 ### 4.1 メタデータ設定
 
-- [ ] サイト共通メタデータ（`layout.tsx`）
-- [ ] トップページメタデータ
+- [x] サイト共通メタデータ（`layout.tsx`）
+- [x] トップページメタデータ
 - [ ] 記事詳細ページメタデータ（動的生成）
 - [ ] カテゴリーページメタデータ
 - [ ] タグページメタデータ
-- [ ] プロフィールページメタデータ
+- [x] プロフィールページメタデータ
 
 ### 4.2 Open Graph / Twitter Card
 
 - [ ] OGP画像生成（または固定画像設定）
-- [ ] 各ページのOG設定
-- [ ] Twitter Card設定
+- [x] 各ページのOG設定
+- [x] Twitter Card設定
 
 ### 4.3 構造化データ (JSON-LD)
 
-- [ ] JSON-LDコンポーネント (`src/components/seo/JsonLd.tsx`)
-- [ ] WebSiteスキーマ（トップページ）
-- [ ] BlogPostingスキーマ（記事ページ）
-- [ ] BreadcrumbListスキーマ
+- [x] JSON-LDコンポーネント (`src/components/seo/JsonLd.tsx`)
+- [x] WebSiteスキーマ（トップページ）
+- [x] BlogPostingスキーマ（記事ページ）
+- [x] BreadcrumbListスキーマ
 - [ ] Personスキーマ（プロフィール）
 
 ### 4.4 パンくずリスト
 
-- [ ] パンくずコンポーネント (`src/components/seo/Breadcrumb.tsx`)
-- [ ] 各ページへの設置
+- [x] パンくずコンポーネント (`src/components/seo/Breadcrumb.tsx`)
+- [x] 各ページへの設置
 
 ### 4.5 サイトマップ・robots.txt
 
-- [ ] サイトマップ動的生成 (`src/app/sitemap.ts`)
-- [ ] robots.txt生成 (`src/app/robots.ts`)
+- [x] サイトマップ動的生成 (`src/app/sitemap.ts`)
+- [x] robots.txt生成 (`src/app/robots.ts`)
 
 ### 4.6 RSSフィード
 
@@ -181,7 +181,7 @@
 
 ### 4.7 canonical URL
 
-- [ ] 各ページにcanonical URL設定
+- [x] 各ページにcanonical URL設定
 
 ---
 
@@ -195,14 +195,14 @@
 
 ### 5.2 静的生成・キャッシュ
 
-- [ ] 静的ページ生成設定
+- [x] 静的ページ生成設定
 - [ ] ISR設定（revalidate）
 - [ ] generateStaticParams実装
 
 ### 5.3 Core Web Vitals対策
 
 - [ ] LCP最適化（ファーストビュー画像優先読み込み）
-- [ ] CLS対策（画像サイズ明示、フォントディスプレイ設定）
+- [x] CLS対策（画像サイズ明示、フォントディスプレイ設定）
 - [ ] FID対策（JSバンドル最適化）
 
 ### 5.4 Lighthouse監査
@@ -218,8 +218,8 @@
 
 ### 6.1 エラーページ
 
-- [ ] 404ページ (`src/app/not-found.tsx`)
-- [ ] エラーページ (`src/app/error.tsx`)
+- [x] 404ページ (`src/app/not-found.tsx`)
+- [x] エラーページ (`src/app/error.tsx`)
 - [ ] グローバルエラーページ (`src/app/global-error.tsx`)
 
 ### 6.2 ローディング
@@ -229,8 +229,8 @@
 
 ### 6.3 アクセシビリティ
 
-- [ ] セマンティックHTML確認
-- [ ] ARIAラベル設定
+- [x] セマンティックHTML確認
+- [x] ARIAラベル設定
 - [ ] キーボードナビゲーション確認
 - [ ] カラーコントラスト確認
 
@@ -282,11 +282,11 @@
 | Phase | タスク数 | 完了 | 進捗 |
 |-------|---------|------|------|
 | Phase 0: プロジェクトルール | 12 | 12 | 100% |
-| Phase 1: 環境構築 | 13 | 0 | 0% |
-| Phase 2: レイアウト | 15 | 0 | 0% |
-| Phase 3: ブログ機能 | 18 | 0 | 0% |
-| Phase 4: SEO対策 | 15 | 0 | 0% |
-| Phase 5: パフォーマンス | 10 | 0 | 0% |
-| Phase 6: エラーハンドリング | 8 | 0 | 0% |
+| Phase 1: 環境構築 | 13 | 1 | 8% |
+| Phase 2: レイアウト | 15 | 12 | 80% |
+| Phase 3: ブログ機能 | 18 | 1 | 6% |
+| Phase 4: SEO対策 | 15 | 11 | 73% |
+| Phase 5: パフォーマンス | 10 | 2 | 20% |
+| Phase 6: エラーハンドリング | 8 | 4 | 50% |
 | Phase 7: デプロイ | 10 | 0 | 0% |
-| **合計** | **101** | **12** | **12%** |
+| **合計** | **101** | **43** | **43%** |

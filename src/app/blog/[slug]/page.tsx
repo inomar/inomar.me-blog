@@ -4,11 +4,13 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 
 import { ArticleContent } from '@/components/blog/ArticleContent';
+import { ArticleNavigation } from '@/components/blog/ArticleNavigation';
+import { TableOfContents } from '@/components/blog/TableOfContents';
 import { Breadcrumb } from '@/components/seo/Breadcrumb';
 import { JsonLd } from '@/components/seo/JsonLd';
 import { Tag } from '@/components/ui/Tag';
 import { SITE_URL } from '@/lib/constants';
-import { getAllBlogSlugs, getBlogBySlug, getRelatedBlogs } from '@/lib/microcms/api';
+import { getAdjacentBlogs, getAllBlogSlugs, getBlogBySlug, getRelatedBlogs } from '@/lib/microcms/api';
 import { formatDate } from '@/lib/utils/date';
 
 type Props = {
@@ -62,7 +64,10 @@ export default async function BlogPage({ params }: Props) {
     notFound();
   }
 
-  const relatedArticles = await getRelatedBlogs(article.id, article.category.id, 3);
+  const [relatedArticles, adjacentBlogs] = await Promise.all([
+    getRelatedBlogs(article.id, article.category.id, 3),
+    getAdjacentBlogs(article.publishedAt),
+  ]);
 
   return (
     <>
@@ -117,7 +122,10 @@ export default async function BlogPage({ params }: Props) {
           </div>
         )}
 
+        <TableOfContents content={article.content} />
         <ArticleContent content={article.content} />
+
+        <ArticleNavigation prev={adjacentBlogs.prev} next={adjacentBlogs.next} />
 
         {relatedArticles.length > 0 && (
           <section className="mt-16 border-t border-gray-200 pt-8 dark:border-slate-700">

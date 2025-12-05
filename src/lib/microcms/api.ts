@@ -244,3 +244,40 @@ export async function getRelatedBlogs(
     return [];
   }
 }
+
+// 前後の記事を取得
+export async function getAdjacentBlogs(
+  publishedAt: string
+): Promise<{ prev: Blog | null; next: Blog | null }> {
+  try {
+    // 前の記事（現在の記事より古い記事で最新のもの）
+    const prevResponse = await client.get<BlogListResponse>({
+      endpoint: 'blogs',
+      queries: {
+        filters: `publishedAt[less_than]${publishedAt}`,
+        limit: 1,
+        orders: '-publishedAt',
+        fields: 'id,title,slug,publishedAt',
+      },
+    });
+
+    // 次の記事（現在の記事より新しい記事で最古のもの）
+    const nextResponse = await client.get<BlogListResponse>({
+      endpoint: 'blogs',
+      queries: {
+        filters: `publishedAt[greater_than]${publishedAt}`,
+        limit: 1,
+        orders: 'publishedAt',
+        fields: 'id,title,slug,publishedAt',
+      },
+    });
+
+    return {
+      prev: prevResponse.contents[0] || null,
+      next: nextResponse.contents[0] || null,
+    };
+  } catch {
+    console.error('Failed to fetch adjacent blogs');
+    return { prev: null, next: null };
+  }
+}

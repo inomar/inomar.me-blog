@@ -104,7 +104,7 @@
 - [x] 記事一覧取得・表示
 - [x] 記事カードコンポーネント (`src/components/blog/ArticleCard.tsx`)
 - [x] 記事リストコンポーネント (`src/components/blog/ArticleList.tsx`)
-- [ ] ページネーション実装
+- [x] ページネーション実装
 
 ### 3.2 記事詳細ページ (`/blog/[slug]`)
 
@@ -112,20 +112,20 @@
 - [x] 記事コンテンツ取得
 - [x] リッチテキストレンダリング (`src/components/blog/ArticleContent.tsx`)
 - [x] シンタックスハイライト適用
-- [ ] 目次自動生成 (`src/components/blog/TableOfContents.tsx`)
+- [x] 目次自動生成 (`src/components/blog/TableOfContents.tsx`)
 - [x] 関連記事表示
-- [ ] 前後記事ナビゲーション
+- [x] 前後記事ナビゲーション (`src/components/blog/ArticleNavigation.tsx`)
 - [ ] SNSシェアボタン
 
 ### 3.3 カテゴリーページ (`/category/[slug]`)
 
 - [x] カテゴリー別記事一覧取得
-- [ ] ページネーション
+- [x] ページネーション
 
 ### 3.4 タグページ (`/tag/[slug]`)
 
 - [x] タグ別記事一覧取得
-- [ ] ページネーション
+- [x] ページネーション
 
 ### 3.5 プロフィールページ (`/about`)
 
@@ -284,9 +284,9 @@
 | Phase 0: プロジェクトルール | 12 | 12 | 100% |
 | Phase 1: 環境構築 | 13 | 13 | 100% |
 | Phase 2: レイアウト | 15 | 12 | 80% |
-| Phase 3: ブログ機能 | 18 | 11 | 61% |
+| Phase 3: ブログ機能 | 18 | 16 | 89% |
 | Phase 4: SEO対策 | 15 | 15 | 100% |
 | Phase 5: パフォーマンス | 10 | 4 | 40% |
 | Phase 6: エラーハンドリング | 8 | 4 | 50% |
 | Phase 7: デプロイ | 10 | 0 | 0% |
-| **合計** | **101** | **73** | **72%** |
+| **合計** | **101** | **78** | **77%** |

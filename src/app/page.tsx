@@ -1,12 +1,16 @@
 import { ArticleList } from '@/components/blog/ArticleList';
 import { JsonLd } from '@/components/seo/JsonLd';
+import { Pagination } from '@/components/ui/Pagination';
 import { SITE_DESCRIPTION, SITE_NAME } from '@/lib/constants';
 import { getBlogs } from '@/lib/microcms/api';
+
+const POSTS_PER_PAGE = 10;
 
 export const revalidate = 60;
 
 export default async function Home() {
-  const { contents: articles } = await getBlogs({ limit: 10 });
+  const { contents: articles, totalCount } = await getBlogs({ limit: POSTS_PER_PAGE });
+  const totalPages = Math.ceil(totalCount / POSTS_PER_PAGE);
 
   return (
     <>
@@ -22,6 +26,11 @@ export default async function Home() {
         <section>
           <h2 className="mb-8 text-2xl font-bold text-gray-900 dark:text-slate-100">最新の記事</h2>
           <ArticleList articles={articles} />
+          {totalPages > 1 && (
+            <div className="mt-12">
+              <Pagination currentPage={1} totalPages={totalPages} basePath="" />
+            </div>
+          )}
         </section>
       </div>
     </>

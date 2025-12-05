@@ -6,4 +6,5 @@ export const AUTHOR_NAME = 'inomar';
 export const NAV_ITEMS = [
   { label: 'Home', href: '/' },
   { label: 'About', href: '/about' },
+  { label: 'Search', href: '/search' },
 ] as const;

@@ -85,7 +85,7 @@
 - [ ] ボタン (`src/components/ui/Button.tsx`)
 - [x] タグ (`src/components/ui/Tag.tsx`)
 - [x] ページネーション (`src/components/ui/Pagination.tsx`)
-- [ ] 検索入力 (`src/components/ui/SearchInput.tsx`)
+- [x] 検索入力 (`src/components/ui/SearchInput.tsx`)
 - [x] スケルトンローダー (`src/components/ui/Skeleton.tsx`)
 
 ### 2.3 ダークモード実装
@@ -134,9 +134,9 @@
 
 ### 3.6 検索機能 (`/search`)
 
-- [ ] 検索UI実装
-- [ ] microCMS検索API連携
-- [ ] 検索結果表示
+- [x] 検索UI実装 (`src/app/search/page.tsx`)
+- [x] microCMS検索API連携 (`searchBlogs`)
+- [x] 検索結果表示
 
 ---
 
@@ -283,10 +283,10 @@
 |-------|---------|------|------|
 | Phase 0: プロジェクトルール | 12 | 12 | 100% |
 | Phase 1: 環境構築 | 13 | 13 | 100% |
-| Phase 2: レイアウト | 15 | 12 | 80% |
+| Phase 2: レイアウト | 15 | 13 | 87% |
 | Phase 3: ブログ機能 | 18 | 17 | 94% |
 | Phase 4: SEO対策 | 15 | 15 | 100% |
 | Phase 5: パフォーマンス | 10 | 4 | 40% |
 | Phase 6: エラーハンドリング | 8 | 6 | 75% |
 | Phase 7: デプロイ | 10 | 0 | 0% |
-| **合計** | **101** | **81** | **80%** |
+| **合計** | **101** | **84** | **83%** |

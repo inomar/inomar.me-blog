@@ -281,3 +281,31 @@ export async function getAdjacentBlogs(
     return { prev: null, next: null };
   }
 }
+
+// 記事を検索
+export async function searchBlogs(
+  query: string,
+  options?: { offset?: number; limit?: number }
+): Promise<BlogListResponse> {
+  const { offset = 0, limit = BLOG_PER_PAGE } = options || {};
+
+  if (!query.trim()) {
+    return emptyBlogResponse;
+  }
+
+  try {
+    return await client.get({
+      endpoint: 'blogs',
+      queries: {
+        q: query,
+        offset,
+        limit,
+        orders: '-publishedAt',
+        depth: 1,
+      },
+    });
+  } catch {
+    console.error(`Failed to search blogs with query: ${query}`);
+    return emptyBlogResponse;
+  }
+}

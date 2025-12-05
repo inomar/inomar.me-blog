@@ -3,6 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 
+import { ArticleContent } from '@/components/blog/ArticleContent';
 import { Breadcrumb } from '@/components/seo/Breadcrumb';
 import { JsonLd } from '@/components/seo/JsonLd';
 import { Tag } from '@/components/ui/Tag';
@@ -116,10 +117,7 @@ export default async function BlogPage({ params }: Props) {
           </div>
         )}
 
-        <div
-          className="prose prose-gray dark:prose-invert prose-headings:font-bold prose-a:text-blue-600 prose-pre:bg-gray-50 dark:prose-a:text-blue-400 dark:prose-pre:bg-slate-800 max-w-none"
-          dangerouslySetInnerHTML={{ __html: article.content }}
-        />
+        <ArticleContent content={article.content} />
 
         {relatedArticles.length > 0 && (
           <section className="mt-16 border-t border-gray-200 pt-8 dark:border-slate-700">

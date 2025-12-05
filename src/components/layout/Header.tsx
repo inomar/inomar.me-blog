@@ -20,6 +20,7 @@ export function Header() {
             width={24}
             height={24}
             className="h-6 w-6"
+            priority
           />
           {SITE_NAME}
         </Link>

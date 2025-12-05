@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import Link from 'next/link';
 
 import { ThemeToggle } from '@/components/ui/ThemeToggle';
@@ -11,8 +12,15 @@ export function Header() {
       <div className="mx-auto flex h-16 max-w-5xl items-center justify-between px-4">
         <Link
           href="/"
-          className="text-lg font-bold text-gray-900 transition-colors hover:text-blue-600 dark:text-slate-100 dark:hover:text-blue-400"
+          className="flex items-center gap-2 text-lg font-bold text-gray-900 transition-colors hover:text-blue-600 dark:text-slate-100 dark:hover:text-blue-400"
         >
+          <Image
+            src="/images/symbol_logo.png"
+            alt=""
+            width={24}
+            height={24}
+            className="h-6 w-6"
+          />
           {SITE_NAME}
         </Link>
 

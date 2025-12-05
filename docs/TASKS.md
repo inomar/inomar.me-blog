@@ -70,7 +70,7 @@
 - [x] ルートレイアウト更新 (`src/app/layout.tsx`)
   - [x] フォント設定（Noto Sans JP, JetBrains Mono）
   - [x] メタデータベース設定
-  - [ ] Google Analytics設定
+  - [x] Google Analytics設定
 - [x] ヘッダーコンポーネント (`src/components/layout/Header.tsx`)
   - [x] ロゴ / サイト名
   - [x] ナビゲーション
@@ -240,16 +240,16 @@
 
 ### 7.1 Vercelデプロイ
 
-- [ ] Vercelプロジェクト作成
-- [ ] 環境変数設定
-- [ ] カスタムドメイン設定（inomar.me）
-- [ ] HTTPS確認
+- [x] Vercelプロジェクト作成
+- [x] 環境変数設定
+- [x] カスタムドメイン設定（inomar.me）
+- [x] HTTPS確認
 
 ### 7.2 分析ツール連携
 
-- [ ] Google Analytics 4設定
-- [ ] Google Search Console登録
-- [ ] サイトマップ送信
+- [x] Google Analytics 4設定
+- [x] Google Search Console登録
+- [x] サイトマップ送信
 
 ### 7.3 microCMS Webhook
 
@@ -283,10 +283,10 @@
 |-------|---------|------|------|
 | Phase 0: プロジェクトルール | 12 | 12 | 100% |
 | Phase 1: 環境構築 | 13 | 13 | 100% |
-| Phase 2: レイアウト | 15 | 14 | 93% |
+| Phase 2: レイアウト | 15 | 15 | 100% |
 | Phase 3: ブログ機能 | 18 | 18 | 100% |
 | Phase 4: SEO対策 | 15 | 15 | 100% |
 | Phase 5: パフォーマンス | 10 | 4 | 40% |
 | Phase 6: エラーハンドリング | 8 | 7 | 88% |
-| Phase 7: デプロイ | 10 | 0 | 0% |
-| **合計** | **101** | **87** | **86%** |
+| Phase 7: デプロイ | 10 | 7 | 70% |
+| **合計** | **101** | **95** | **94%** |

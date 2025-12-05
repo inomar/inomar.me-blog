@@ -4,11 +4,43 @@ import Link from 'next/link';
 import type { Blog } from '@/lib/microcms/types';
 import { formatDate } from '@/lib/utils/date';
 
+const PLACEHOLDER_EMOJIS = [
+  '📝',
+  '💡',
+  '🚀',
+  '⚡',
+  '🎯',
+  '🔧',
+  '💻',
+  '📚',
+  '🎨',
+  '🌟',
+  '✨',
+  '🔥',
+  '💪',
+  '🎉',
+  '📖',
+  '🛠️',
+];
+
+function getRandomEmoji(seed: string): string {
+  let hash = 0;
+  for (let i = 0; i < seed.length; i++) {
+    const char = seed.charCodeAt(i);
+    hash = (hash << 5) - hash + char;
+    hash = hash & hash;
+  }
+  const index = Math.abs(hash) % PLACEHOLDER_EMOJIS.length;
+  return PLACEHOLDER_EMOJIS[index];
+}
+
 type ArticleCardProps = {
   article: Blog;
 };
 
 export function ArticleCard({ article }: ArticleCardProps) {
+  const placeholderEmoji = getRandomEmoji(article.id);
+
   return (
     <article className="group rounded-lg border border-gray-200 bg-white transition-shadow hover:shadow-md dark:border-slate-700 dark:bg-slate-800">
       <Link href={`/blog/${article.slug}`} className="block">
@@ -23,8 +55,8 @@ export function ArticleCard({ article }: ArticleCardProps) {
             />
           </div>
         ) : (
-          <div className="flex aspect-video items-center justify-center rounded-t-lg bg-gray-100 dark:bg-slate-700">
-            <span className="text-4xl text-gray-300 dark:text-slate-500">📝</span>
+          <div className="flex aspect-video items-center justify-center rounded-t-lg bg-gradient-to-br from-gray-100 to-gray-200 dark:from-slate-700 dark:to-slate-800">
+            <span className="text-6xl">{placeholderEmoji}</span>
           </div>
         )}
         <div className="p-5">

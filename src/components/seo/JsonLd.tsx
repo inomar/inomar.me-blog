@@ -13,7 +13,14 @@ type BlogPostingJsonLdProps = {
   image?: string;
 };
 
-type JsonLdProps = WebSiteJsonLdProps | BlogPostingJsonLdProps;
+type PersonJsonLdProps = {
+  type: 'Person';
+  name: string;
+  description: string;
+  image?: string;
+};
+
+type JsonLdProps = WebSiteJsonLdProps | BlogPostingJsonLdProps | PersonJsonLdProps;
 
 export function JsonLd(props: JsonLdProps) {
   let jsonLd: object;
@@ -30,6 +37,15 @@ export function JsonLd(props: JsonLdProps) {
         target: `${SITE_URL}/search?q={search_term_string}`,
         'query-input': 'required name=search_term_string',
       },
+    };
+  } else if (props.type === 'Person') {
+    jsonLd = {
+      '@context': 'https://schema.org',
+      '@type': 'Person',
+      name: props.name,
+      description: props.description,
+      image: props.image,
+      url: `${SITE_URL}/about`,
     };
   } else {
     jsonLd = {

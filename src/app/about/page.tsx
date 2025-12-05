@@ -2,6 +2,7 @@ import { Metadata } from 'next';
 import Image from 'next/image';
 
 import { Breadcrumb } from '@/components/seo/Breadcrumb';
+import { JsonLd } from '@/components/seo/JsonLd';
 import { getProfile } from '@/lib/microcms/api';
 
 export const revalidate = 60;
@@ -19,8 +20,17 @@ export default async function AboutPage() {
   const profile = await getProfile();
 
   return (
-    <div className="mx-auto max-w-3xl px-4 py-12">
-      <Breadcrumb items={[{ label: 'About', href: '/about' }]} />
+    <>
+      {profile && (
+        <JsonLd
+          type="Person"
+          name={profile.name}
+          description={profile.bio}
+          image={profile.avatar?.url}
+        />
+      )}
+      <div className="mx-auto max-w-3xl px-4 py-12">
+        <Breadcrumb items={[{ label: 'About', href: '/about' }]} />
 
       <h1 className="mb-8 text-3xl font-bold text-gray-900 dark:text-slate-100">About</h1>
 
@@ -69,6 +79,7 @@ export default async function AboutPage() {
           </section>
         )}
       </div>
-    </div>
+      </div>
+    </>
   );
 }

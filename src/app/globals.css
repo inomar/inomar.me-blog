@@ -1,4 +1,5 @@
 @import 'tailwindcss';
+@plugin '@tailwindcss/typography';
 
 /* Enable class-based dark mode */
 @custom-variant dark (&:where(.dark, .dark *));
@@ -24,106 +25,46 @@ html {
   outline-offset: 2px;
 }
 
-/* Prose styles for article content */
+/* Custom prose enhancements (extends @tailwindcss/typography) */
 .prose {
-  --tw-prose-body: theme(colors.gray.700);
-  --tw-prose-headings: theme(colors.gray.900);
-  --tw-prose-links: theme(colors.blue.600);
-  --tw-prose-code: theme(colors.gray.900);
-  --tw-prose-pre-bg: theme(colors.gray.50);
-}
-
-.dark .prose {
-  --tw-prose-body: theme(colors.slate.300);
-  --tw-prose-headings: theme(colors.slate.100);
-  --tw-prose-links: theme(colors.blue.400);
-  --tw-prose-code: theme(colors.slate.100);
-  --tw-prose-pre-bg: theme(colors.slate.800);
-}
-
-/* Enhanced prose typography for better readability */
-.prose {
-  font-size: 1.0625rem; /* 17px */
+  font-size: 1.0625rem; /* 17px for better readability */
   line-height: 1.9;
 }
 
-.prose p {
-  margin-top: 1.5em;
-  margin-bottom: 1.5em;
-}
-
-.prose h2 {
-  margin-top: 2.5em;
-  margin-bottom: 1em;
+/* Heading styles with underline for h2 */
+.prose :where(h2):not(:where([class~='not-prose'], [class~='not-prose'] *)) {
   padding-bottom: 0.5em;
-  border-bottom: 1px solid theme(colors.gray.200);
+  border-bottom: 1px solid var(--tw-prose-hr);
 }
 
-.dark .prose h2 {
-  border-bottom-color: theme(colors.slate.700);
-}
-
-.prose h3 {
-  margin-top: 2em;
-  margin-bottom: 0.75em;
-}
-
-.prose h4 {
-  margin-top: 1.75em;
-  margin-bottom: 0.5em;
-}
-
-.prose ul,
-.prose ol {
-  margin-top: 1.25em;
-  margin-bottom: 1.25em;
-  padding-left: 1.75em;
-}
-
-.prose li {
-  margin-top: 0.625em;
-  margin-bottom: 0.625em;
-}
-
-.prose blockquote {
-  margin-top: 1.75em;
-  margin-bottom: 1.75em;
-  padding: 1em 1.25em;
-  border-left-width: 4px;
+/* Enhanced blockquote styling */
+.prose :where(blockquote):not(:where([class~='not-prose'], [class~='not-prose'] *)) {
   background-color: theme(colors.gray.50);
+  padding: 1em 1.25em;
   border-radius: 0 0.5rem 0.5rem 0;
 }
 
-.dark .prose blockquote {
-  background-color: theme(colors.slate.800/50);
+.dark .prose :where(blockquote):not(:where([class~='not-prose'], [class~='not-prose'] *)) {
+  background-color: rgb(51 65 85 / 0.5);
 }
 
-.prose pre {
-  margin-top: 1.75em;
-  margin-bottom: 1.75em;
-  padding: 1.25em;
-  border-radius: 0.5rem;
-  overflow-x: auto;
-}
-
-.prose code:not(pre code) {
+/* Inline code styling */
+.prose :where(code):not(:where(pre *, [class~='not-prose'], [class~='not-prose'] *)) {
   padding: 0.2em 0.4em;
   border-radius: 0.25rem;
   background-color: theme(colors.gray.100);
-  font-size: 0.875em;
 }
 
-.dark .prose code:not(pre code) {
+.prose :where(code):not(:where(pre *, [class~='not-prose'], [class~='not-prose'] *))::before,
+.prose :where(code):not(:where(pre *, [class~='not-prose'], [class~='not-prose'] *))::after {
+  content: none;
+}
+
+.dark .prose :where(code):not(:where(pre *, [class~='not-prose'], [class~='not-prose'] *)) {
   background-color: theme(colors.slate.700);
 }
 
-.prose img {
-  margin-top: 2em;
-  margin-bottom: 2em;
+/* Image styling */
+.prose :where(img):not(:where([class~='not-prose'], [class~='not-prose'] *)) {
   border-radius: 0.5rem;
-}
-
-.prose hr {
-  margin-top: 3em;
-  margin-bottom: 3em;
 }

@@ -14,10 +14,16 @@ function slugify(text: string): string {
 
 // 見出しにIDを追加
 function addHeadingIds(html: string): string {
-  const headingRegex = /<h([2-4])>([^<]*)<\/h[2-4]>/gi;
+  // 属性付きの見出しタグにも対応（既存のidは上書きしない）
+  const headingRegex = /<h([2-4])(\s[^>]*)?>([^<]*)<\/h[2-4]>/gi;
   const usedIds = new Set<string>();
 
-  return html.replace(headingRegex, (match, level, text) => {
+  return html.replace(headingRegex, (match, level, attrs = '', text) => {
+    // 既にidがある場合はそのまま返す
+    if (attrs && /\sid=["'][^"']*["']/.test(attrs)) {
+      return match;
+    }
+
     let id = slugify(text);
 
     // 重複IDを回避
@@ -29,7 +35,9 @@ function addHeadingIds(html: string): string {
     }
     usedIds.add(id);
 
-    return `<h${level} id="${id}">${text}</h${level}>`;
+    // 既存の属性を保持しつつidを追加
+    const newAttrs = attrs ? ` id="${id}"${attrs}` : ` id="${id}"`;
+    return `<h${level}${newAttrs}>${text}</h${level}>`;
   });
 }
 

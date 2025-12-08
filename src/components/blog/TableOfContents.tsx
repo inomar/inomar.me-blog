@@ -21,24 +21,33 @@ function slugify(text: string): string {
 }
 
 function extractHeadings(html: string): TocItem[] {
-  // IDなしの見出しも検出（microCMSから来る生のHTMLはIDがない）
-  const headingRegex = /<h([2-4])(?:[^>]*)>([^<]*)<\/h[2-4]>/gi;
+  // 属性付きの見出しタグにも対応
+  const headingRegex = /<h([2-4])(\s[^>]*)?>([^<]*)<\/h[2-4]>/gi;
   const headings: TocItem[] = [];
   const usedIds = new Set<string>();
 
   let match;
   while ((match = headingRegex.exec(html)) !== null) {
     const level = parseInt(match[1], 10);
-    const text = match[2].trim();
+    const attrs = match[2] || '';
+    const text = match[3].trim();
 
     if (text) {
-      // highlight.tsと同じID生成ロジック
-      let id = slugify(text);
-      let counter = 1;
-      const originalId = id;
-      while (usedIds.has(id)) {
-        id = `${originalId}-${counter}`;
-        counter++;
+      // 既存のidがあればそれを使用、なければ生成
+      const existingIdMatch = attrs.match(/\sid=["']([^"']*)["']/);
+      let id: string;
+
+      if (existingIdMatch) {
+        id = existingIdMatch[1];
+      } else {
+        // highlight.tsと同じID生成ロジック
+        id = slugify(text);
+        let counter = 1;
+        const originalId = id;
+        while (usedIds.has(id)) {
+          id = `${originalId}-${counter}`;
+          counter++;
+        }
       }
       usedIds.add(id);
 

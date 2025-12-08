@@ -25,6 +25,8 @@
 | フレームワーク | Next.js 16 (App Router) |
 | 言語 | TypeScript |
 | スタイリング | Tailwind CSS 4 |
+| 記事スタイリング | @tailwindcss/typography |
+| シンタックスハイライト | shiki |
 | CMS | microCMS |
 | ホスティング | Vercel |
 | パッケージ管理 | yarn |
@@ -289,23 +291,62 @@ Sitemap: https://inomar.me/sitemap.xml
 | 機能 | 詳細 |
 |------|------|
 | 記事表示 | Markdown/リッチテキストのレンダリング |
-| シンタックスハイライト | コードブロックのハイライト表示 |
+| シンタックスハイライト | コードブロックのハイライト表示（shiki使用） |
+| 記事スタイリング | @tailwindcss/typography による prose スタイル |
 | 目次自動生成 | 見出しから目次を自動生成 |
 | ページネーション | 記事一覧のページ分割 |
 | カテゴリー/タグフィルター | 記事の絞り込み |
 | 検索機能 | 全文検索 |
 | ダークモード | システム設定連動 + 手動切替 |
+| プロダクトカード | アフィリエイトリンクのリッチ表示 |
+| サムネイルプレースホルダー | サムネイル未設定時にランダム絵文字を表示 |
 
-### 5.2 UI/UX
+### 5.2 プロダクトカード（アフィリエイトリンク）
+
+記事内にアフィリエイトリンクをリッチなカード形式で表示する機能。
+
+#### 使用方法
+
+microCMSのリッチエディタで「HTML埋め込み」を使用し、以下の形式で記述:
+
+```html
+<div data-product
+  data-url="https://affiliate-link.example.com/product"
+  data-title="商品名"
+  data-image="https://example.com/image.jpg"
+  data-price="¥1,234"
+  data-description="商品の説明文"
+  data-seller="Amazon">
+</div>
+```
+
+#### 属性一覧
+
+| 属性 | 必須 | 説明 |
+|------|------|------|
+| `data-product` | ○ | カード識別用マーカー |
+| `data-url` | ○ | アフィリエイトリンクURL |
+| `data-title` | ○ | 商品名 |
+| `data-image` | - | 商品画像URL |
+| `data-price` | - | 価格表示（例: ¥1,234） |
+| `data-description` | - | 商品説明文 |
+| `data-seller` | - | 販売元（例: Amazon） |
+
+#### 自動付与される属性
+
+- PRバッジ: カード右上に「PR」表示
+- `rel="noopener noreferrer sponsored"`: リンクに自動設定
+
+### 5.3 UI/UX
 
 | 項目 | 詳細 |
 |------|------|
 | レスポンシブ | モバイルファースト設計 |
 | アクセシビリティ | WCAG 2.1 AA準拠 |
-| ローディング | スケルトンスクリーン |
+| ローディング | Suspense + スケルトンスクリーン |
 | エラーハンドリング | 404/500ページ |
 
-### 5.3 分析/計測
+### 5.4 分析/計測
 
 | 項目 | ツール |
 |------|--------|
@@ -324,37 +365,46 @@ src/
 │   ├── globals.css             # グローバルスタイル
 │   ├── blog/
 │   │   └── [slug]/
-│   │       └── page.tsx        # 記事詳細
+│   │       ├── page.tsx        # 記事詳細
+│   │       └── loading.tsx     # ローディングUI
 │   ├── category/
 │   │   └── [slug]/
-│   │       └── page.tsx        # カテゴリー一覧
+│   │       ├── page.tsx        # カテゴリー一覧
+│   │       └── loading.tsx     # ローディングUI
 │   ├── tag/
 │   │   └── [slug]/
-│   │       └── page.tsx        # タグ一覧
+│   │       ├── page.tsx        # タグ一覧
+│   │       └── loading.tsx     # ローディングUI
 │   ├── about/
 │   │   └── page.tsx            # プロフィール
 │   ├── search/
-│   │   └── page.tsx            # 検索
+│   │   ├── page.tsx            # 検索
+│   │   └── loading.tsx         # ローディングUI
 │   ├── sitemap.ts              # サイトマップ生成
 │   ├── robots.ts               # robots.txt生成
 │   └── feed.xml/
 │       └── route.ts            # RSSフィード
 ├── components/
+│   ├── analytics/
+│   │   └── GoogleAnalytics.tsx # GA4トラッキング
 │   ├── layout/
 │   │   ├── Header.tsx
-│   │   ├── Footer.tsx
-│   │   └── Navigation.tsx
+│   │   └── Footer.tsx
 │   ├── blog/
-│   │   ├── ArticleCard.tsx
+│   │   ├── ArticleCard.tsx     # 記事カード（絵文字プレースホルダー付き）
 │   │   ├── ArticleList.tsx
-│   │   ├── ArticleContent.tsx
-│   │   ├── TableOfContents.tsx
-│   │   └── RelatedArticles.tsx
+│   │   ├── ArticleContent.tsx  # 記事本文（プロダクトカード変換）
+│   │   ├── ArticleNavigation.tsx
+│   │   ├── ProductCard.tsx     # アフィリエイト用プロダクトカード
+│   │   ├── ShareButtons.tsx
+│   │   └── TableOfContents.tsx
 │   ├── ui/
-│   │   ├── Button.tsx
-│   │   ├── Tag.tsx
 │   │   ├── Pagination.tsx
-│   │   └── SearchInput.tsx
+│   │   ├── SearchInput.tsx
+│   │   ├── Skeleton.tsx
+│   │   ├── SocialIcons.tsx     # SNSアイコン（X, GitHub）
+│   │   ├── Tag.tsx
+│   │   └── ThemeToggle.tsx
 │   └── seo/
 │       ├── JsonLd.tsx
 │       └── Breadcrumb.tsx
@@ -363,11 +413,13 @@ src/
 │   │   ├── client.ts           # microCMSクライアント
 │   │   ├── types.ts            # 型定義
 │   │   └── api.ts              # API関数
+│   ├── constants.ts            # 定数（サイト情報、SNSリンク）
 │   └── utils/
 │       ├── date.ts             # 日付フォーマット
-│       └── string.ts           # 文字列ユーティリティ
+│       ├── highlight.ts        # シンタックスハイライト（shiki）
+│       └── productCard.ts      # プロダクトカードHTMLパーサー
 └── styles/
-    └── syntax-highlight.css    # シンタックスハイライト
+    └── (globals.cssに統合)
 ```
 
 ---

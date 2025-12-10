@@ -4,7 +4,13 @@ import { Noto_Sans_JP, JetBrains_Mono } from 'next/font/google';
 import { GoogleAnalytics } from '@/components/analytics/GoogleAnalytics';
 import { Footer } from '@/components/layout/Footer';
 import { Header } from '@/components/layout/Header';
-import { SITE_DESCRIPTION, SITE_NAME, SITE_URL } from '@/lib/constants';
+import {
+  SITE_DESCRIPTION,
+  SITE_NAME,
+  SITE_OG_DESCRIPTION,
+  SITE_TAGLINE,
+  SITE_URL,
+} from '@/lib/constants';
 
 import './globals.css';
 
@@ -21,6 +27,8 @@ const jetbrainsMono = JetBrains_Mono({
   display: 'swap',
 });
 
+const OG_TITLE = `${SITE_NAME} | ${SITE_TAGLINE}`;
+
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
@@ -36,8 +44,8 @@ export const metadata: Metadata = {
     apple: '/favicon.png',
   },
   openGraph: {
-    title: SITE_NAME,
-    description: SITE_DESCRIPTION,
+    title: OG_TITLE,
+    description: SITE_OG_DESCRIPTION,
     url: SITE_URL,
     siteName: SITE_NAME,
     locale: 'ja_JP',
@@ -53,8 +61,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: SITE_NAME,
-    description: SITE_DESCRIPTION,
+    title: OG_TITLE,
+    description: SITE_OG_DESCRIPTION,
     images: ['/images/facebook_cover_photo_1.png'],
   },
   robots: {

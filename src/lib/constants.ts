@@ -1,5 +1,9 @@
 export const SITE_NAME = '不定期更新症候群';
-export const SITE_DESCRIPTION = '個人の趣味・技術系ブログ';
+export const SITE_TAGLINE = '弾きたい気持ちだけは一人前';
+export const SITE_DESCRIPTION =
+  'ベース弾きたいけど時間ない、お金ない、準備だるい。そんな社会人あるあるに寄り添う、ゆるっと不定期更新ブログです。たまにWeb開発の話も。';
+export const SITE_OG_DESCRIPTION =
+  '時間ない、お金ない、準備だるい。それでもベース弾きたい社会人のゆるっとブログ。';
 export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://inomar.me';
 export const AUTHOR_NAME = 'inomar';
 
